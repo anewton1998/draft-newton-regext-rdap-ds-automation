@@ -25,7 +25,7 @@ category: bcp
 
 docname: draft-newton-regext-rdap-ds-automation
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
-number: 00
+number: 
 date: 13 October 2026
 consensus: true
 v: 3
