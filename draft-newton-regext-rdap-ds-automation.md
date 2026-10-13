@@ -19,35 +19,34 @@
 # Change the file extension to match the format (.xml for XML, etc...)
 #
 ###
-title: "TODO - Your title"
-abbrev: "TODO - Abbreviation"
-category: info
+title: "Best Current Practices for Publication of DS Automation Events in RDAP"
+abbrev: "rdap-ds-auto"
+category: bcp
 
-docname: draft-todo-yourname-protocol-latest
+docname: draft-newton-regext-rdap-ds-automation
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
-number:
-date:
+number: 00
+date: 13 October 2026
 consensus: true
 v: 3
-area: AREA
-workgroup: WG Working Group
+area: OPS
+workgroup: REGEXT
 keyword:
- - next generation
- - unicorn
- - AI-native
+ - RDAP
+ - DNSSEC
 venue:
-  group: WG
+  group: REGEXT
   type: Working Group
-  mail: WG@example.com
-  arch: https://example.com/WG
-  github: USER/REPO
-  latest: https://example.com/LATEST
+  mail: regext@ietf.org
+  arch: https://mailarchive.ietf.org/arch/browse/regext/
+  github: anewton1998/draft-ietf-newton-rdap-ds-automation
+  latest: https://anewton1998.github.io/draft-newton-regext-rdap-ds-automation/
 
 author:
  -
-    fullname: Your Name Here
-    organization: Your Organization Here
-    email: your.email@example.com
+    fullname: Andrew Newton
+    organization: ICANN
+    email: andy@hxr.us
 
 normative:
 
@@ -57,15 +56,17 @@ informative:
 
 --- abstract
 
-TODO Abstract
-
+This document describes the best current practices for the publication of events
+regarding Delegation Signer (DS) records in RDAP domain registrations as described
+in RFC10026.
 
 --- middle
 
 # Introduction {#intro}
 
-TODO Introduction
-
+{{RFC10026}} is a BCP regarding operational practices around the automation of maintenance
+of Delegation Signer (DS) DNSSEC resource records. This document describes how that information
+should be published in RDAP.
 
 # Conventions and Definitions
 
@@ -87,4 +88,4 @@ This document has no IANA actions.
 # Acknowledgments
 {:numbered="false"}
 
-TODO acknowledge.
+Gavin Brown helped outline the premise of this document.
