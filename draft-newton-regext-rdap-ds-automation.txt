@@ -2,13 +2,14 @@
 
 
 
-Internet Engineering Task Force (IETF)                         A. Newton
-Request for Comments: 0                                            ICANN
-Category: Best Current Practice                             October 2026
-ISSN: 2070-1721
+REGEXT                                                         A. Newton
+Internet-Draft                                                     ICANN
+Intended status: Best Current Practice                      October 2026
+Expires: 16 April 2027
 
 
  Best Current Practices for Publication of DS Automation Events in RDAP
+                 draft-newton-regext-rdap-ds-automation
 
 Abstract
 
@@ -16,19 +17,39 @@ Abstract
    publication of events regarding Delegation Signer (DS) records in
    RDAP domain registrations as described in RFC10026.
 
+About This Document
+
+   This note is to be removed before publishing as an RFC.
+
+   The latest revision of this draft can be found at
+   https://anewton1998.github.io/draft-newton-regext-rdap-ds-
+   automation/.  Status information for this document may be found at
+   https://datatracker.ietf.org/doc/draft-newton-regext-rdap-ds/.
+
+   Discussion of this document takes place on the REGEXT Working Group
+   mailing list (mailto:regext@ietf.org), which is archived at
+   https://mailarchive.ietf.org/arch/browse/regext/.  Subscribe at
+   https://www.ietf.org/mailman/listinfo/regext/.
+
+   Source for this draft and an issue tracker can be found at
+   https://github.com/anewton1998/draft-ietf-newton-rdap-ds-automation.
+
 Status of This Memo
 
-   This memo documents an Internet Best Current Practice.
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
 
-   This document is a product of the Internet Engineering Task Force
-   (IETF).  It represents the consensus of the IETF community.  It has
-   received public review and has been approved for publication by the
-   Internet Engineering Steering Group (IESG).  Further information on
-   BCPs is available in Section 2 of RFC 7841.
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
 
-   Information about the current status of this document, any errata,
-   and how to provide feedback on it may be obtained at
-   https://www.rfc-editor.org/info/rfc0.
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on 4 April 2027.
 
 Copyright Notice
 
@@ -36,14 +57,13 @@ Copyright Notice
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
-   Provisions Relating to IETF Documents
-   (https://trustee.ietf.org/license-info) in effect on the date of
-   publication of this document.  Please review these documents
-   carefully, as they describe your rights and restrictions with respect
-   to this document.  Code Components extracted from this document must
-   include Revised BSD License text as described in Section 4.e of the
-   Trust Legal Provisions and are provided without warranty as described
-   in the Revised BSD License.
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
 
 Table of Contents
 

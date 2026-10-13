@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" class="RFC">
+<html lang="en" class="Internet-Draft">
 <head>
 <meta charset="utf-8">
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
-<title>RFC 0: Best Current Practices for Publication of DS Automation Events in RDAP</title>
+<title>Best Current Practices for Publication of DS Automation Events in RDAP</title>
 <meta content="Andrew Newton" name="author">
 <meta content="
        This document describes the best current practices for the publication of events
@@ -14,7 +14,7 @@ in RFC10026.
 <meta content="xml2rfc 3.34.1" name="generator">
 <meta content="RDAP" name="keyword">
 <meta content="DNSSEC" name="keyword">
-<meta content="0" name="rfc.number">
+<meta content="draft-newton-regext-rdap-ds-automation" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.34.1
     Python 3.14.8
@@ -1038,38 +1038,35 @@ svg {
 }
 </style>
 
-<link href="https://dx.doi.org/10.17487/rfc0" rel="alternate">
-  <link href="urn:issn:2070-1721" rel="alternate">
-  <link href="https://datatracker.ietf.org/doc/draft-newton-regext-rdap-ds-automation" rel="prev">
-  </head>
+</head>
 <body class="xml2rfc">
 <table class="ears">
 <thead><tr>
-<td class="left">RFC 0</td>
+<td class="left">Internet-Draft</td>
 <td class="center">rdap-ds-auto</td>
 <td class="right">October 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Newton</td>
-<td class="center">Best Current Practice</td>
+<td class="center">Expires 16 April 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
 <div id="external-metadata" class="document-information"></div>
 <div id="internal-metadata" class="document-information">
 <dl id="identifiers">
-<dt class="label-stream">Stream:</dt>
-<dd class="stream">Internet Engineering Task Force (IETF)</dd>
-<dt class="label-rfc">RFC:</dt>
-<dd class="rfc"><a href="https://www.rfc-editor.org/rfc/rfc0" class="eref">0</a></dd>
-<dt class="label-category">Category:</dt>
-<dd class="category">Best Current Practice</dd>
+<dt class="label-workgroup">Workgroup:</dt>
+<dd class="workgroup">REGEXT</dd>
+<dt class="label-internet-draft">Internet-Draft:</dt>
+<dd class="internet-draft">draft-newton-regext-rdap-ds-automation</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
 <time datetime="2026-10" class="published">October 2026</time>
     </dd>
-<dt class="label-issn">ISSN:</dt>
-<dd class="issn">2070-1721</dd>
+<dt class="label-intended-status">Intended Status:</dt>
+<dd class="intended-status">Best Current Practice</dd>
+<dt class="label-expires">Expires:</dt>
+<dd class="expires"><time datetime="2027-04-16">16 April 2027</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1079,7 +1076,6 @@ svg {
 </dd>
 </dl>
 </div>
-<h1 id="rfcnum">RFC 0</h1>
 <h1 id="title">Best Current Practices for Publication of DS Automation Events in RDAP</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
@@ -1087,23 +1083,42 @@ svg {
 regarding Delegation Signer (DS) records in RDAP domain registrations as described
 in RFC10026.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
+<section class="note rfcEditorRemove" id="section-note.1">
+      <h2 id="name-about-this-document">
+<a href="#name-about-this-document" class="section-name selfRef">About This Document</a>
+      </h2>
+<p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
+<p id="section-note.1-2">
+        The latest revision of this draft can be found at <span><a href="https://anewton1998.github.io/draft-newton-regext-rdap-ds-automation/">https://anewton1998.github.io/draft-newton-regext-rdap-ds-automation/</a></span>.
+        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-newton-regext-rdap-ds/">https://datatracker.ietf.org/doc/draft-newton-regext-rdap-ds/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+<p id="section-note.1-3">
+        Discussion of this document takes place on the
+        REGEXT Working Group mailing list (<span><a href="mailto:regext@ietf.org">mailto:regext@ietf.org</a></span>),
+        which is archived at <span><a href="https://mailarchive.ietf.org/arch/browse/regext/">https://mailarchive.ietf.org/arch/browse/regext/</a></span>.
+        Subscribe at <span><a href="https://www.ietf.org/mailman/listinfo/regext/">https://www.ietf.org/mailman/listinfo/regext/</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
+<p id="section-note.1-4">Source for this draft and an issue tracker can be found at
+        <span><a href="https://github.com/anewton1998/draft-ietf-newton-rdap-ds-automation">https://github.com/anewton1998/draft-ietf-newton-rdap-ds-automation</a></span>.<a href="#section-note.1-4" class="pilcrow">¶</a></p>
+</section>
 <div id="status-of-memo">
 <section id="section-boilerplate.1">
         <h2 id="name-status-of-this-memo">
 <a href="#name-status-of-this-memo" class="section-name selfRef">Status of This Memo</a>
         </h2>
 <p id="section-boilerplate.1-1">
-            This memo documents an Internet Best Current Practice.<a href="#section-boilerplate.1-1" class="pilcrow">¶</a></p>
+        This Internet-Draft is submitted in full conformance with the
+        provisions of BCP 78 and BCP 79.<a href="#section-boilerplate.1-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-2">
-            This document is a product of the Internet Engineering Task Force
-            (IETF).  It represents the consensus of the IETF community.  It has
-            received public review and has been approved for publication by
-            the Internet Engineering Steering Group (IESG).  Further information
-            on BCPs is available in Section 2 of RFC 7841.<a href="#section-boilerplate.1-2" class="pilcrow">¶</a></p>
+        Internet-Drafts are working documents of the Internet Engineering Task
+        Force (IETF). Note that other groups may also distribute working
+        documents as Internet-Drafts. The list of current Internet-Drafts is
+        at <span><a href="https://datatracker.ietf.org/drafts/current/">https://datatracker.ietf.org/drafts/current/</a></span>.<a href="#section-boilerplate.1-2" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-3">
-            Information about the current status of this document, any
-            errata, and how to provide feedback on it may be obtained at
-            <span><a href="https://www.rfc-editor.org/info/rfc0">https://www.rfc-editor.org/info/rfc0</a></span>.<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
+        Internet-Drafts are draft documents valid for a maximum of six months
+        and may be updated, replaced, or obsoleted by other documents at any
+        time. It is inappropriate to use Internet-Drafts as reference
+        material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-4">
+        This Internet-Draft will expire on 4 April 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
