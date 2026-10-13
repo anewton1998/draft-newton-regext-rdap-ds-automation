@@ -64,7 +64,7 @@ in RFC10026.
 
 # Introduction {#intro}
 
-{{RFC10026}} is a BCP regarding operational practices around the automation of maintenance
+{{!RFC10026}} is a BCP regarding operational practices around the automation of maintenance
 of Delegation Signer (DS) DNSSEC resource records. This document describes how that information
 should be published in RDAP.
 
