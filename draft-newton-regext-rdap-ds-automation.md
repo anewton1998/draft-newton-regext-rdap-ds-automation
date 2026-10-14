@@ -114,6 +114,26 @@ registry.
 
 {::boilerplate bcp14-tagged}
 
+# The "DNSSEC Automation" Event Actor
+
+For any event in the "dsData" or "keyData" objects that is a result of an action
+taken by the authority of the DNS system (i.e., a domain registry for domains or RIR for reverse-domains, "Registry-Led"),
+the "eventActor" MUST have a value of "DNSSEC Automation".
+
+# Event Actions
+
+Use the following registered event actions:
+
+* registration
+* last changed
+* deletion
+
+RFC10026 mentions historical data... let's discuss.
+
+# "dsAutomation0" RDAP Profile Extension
+
+RDAP servers compliant with this document MUST use the "dsAutomation0" RDAP profile extension,
+where profiles are described in {{!I-D.draft-ietf-regext-rdap-extensions}}.
 
 # Security Considerations {#security}
 
