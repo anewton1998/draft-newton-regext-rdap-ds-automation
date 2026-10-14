@@ -56,17 +56,59 @@ informative:
 
 --- abstract
 
-This document describes the best current practices for the publication of events
-regarding Delegation Signer (DS) records in RDAP domain registrations as described
+This document describes the best current practices for the publication of RDAP events
+in domain registrations regarding the automated maintenance of Delegation Signer (DS) records as described
 in RFC10026.
 
 --- middle
 
 # Introduction {#intro}
 
-{{!RFC10026}} is a BCP regarding operational practices around the automation of maintenance
-of Delegation Signer (DS) DNSSEC resource records. This document describes how that information
-should be published in RDAP.
+{{!RFC10026}} describes best current practices regarding the automated maintenance
+of Delegation Signer (DS) DNSSEC resource records. This document describes the publication
+of those maintenance events in RDAP.
+
+{{!RFC9083}} defines an RDAP event as a JSON object with three members, "eventAction", "eventDate", and "eventActor".
+
+{: #event_example title="Example RDAP Event"}
+~~~ json
+{
+  "eventAction": "this thing happened",
+  "eventDate": "2026-08-14T00:00:00Z",
+  "eventActor": "I did it"
+}
+~~~
+
+Both the "dsData" and "keyData" structures of the "secureDNS" object in RDAP domain
+registrations have distinct events.
+
+{: #secureDNS_example title="Example RDAP secureDNS object"}
+~~~ json
+"secureDNS" : {
+  "delegationSigned" : true,
+  "dsData" : [
+    {
+      "algorithm" : 13,
+      "digest" : "B9BEC0EAC0F064929C8586DB185537787015EC3A48F0894BEA74DEEA452F3060",
+      "digestType" : 2,
+      "events" : [
+        {
+          "eventAction" : "registration",
+          "eventDate" : "2018-03-27T20:09:08Z"
+        },
+        {
+          "eventAction" : "last changed",
+          "eventDate" : "2022-04-27T20:19:46Z"
+        }
+      ],
+      "keyTag" : 47828
+    }
+  ]
+}
+~~~
+
+The "eventAction" value of RDAP events are registered in the IANA RDAP JSON values
+registry.
 
 # Conventions and Definitions
 
