@@ -180,6 +180,10 @@ Table of Contents
    [RFC9083] and should be interoperable with all existing RDAP clients
    that support the domain lookup query.
 
+   https://rdap.regy.example/domain/foo.example
+
+                   Figure 3: Example DS Automation Query
+
    When responding to domain lookups (Section 3.1.3 of [RFC9082]),
    servers compliant with the "dsAutomation0" extension MUST describe
    "dsData" and "keyData" events as described in Section 3 for the
@@ -187,6 +191,31 @@ Table of Contents
    time of query (i.e., these are not historical events but represent
    the current state of the registration).  As such, it is not expected
    that "ds automation removal" would appear in these events.
+
+   {
+     "objectClassName" : "domain",
+     "ldhName" : "foo.example",
+     "secureDNS" : {
+       "delegationSigned" : true,
+       "dsData" : [
+         {
+           "algorithm" : 13,
+           "digest" : "B9BEC0EAC0F064929C8586DB185537787015EC3A48F0894BEA74DEEA452F3060",
+           "digestType" : 2,
+           "keyTag" : 47828
+           "events" : [
+             {
+               "eventAction" : "ds automation update",
+               "eventActor"  : "https://reg.example.com/ds-automation.html",
+               "eventDate"   : "2026-10-13T00:00:00Z"
+             }
+           ]
+         }
+       ]
+     }
+   }
+
+              Figure 4: Example Result of DS Automation Query
 
 5.  The "dsAutomationHistory0" RDAP Extension
 
@@ -199,15 +228,51 @@ Table of Contents
 
    https://rdap.regy.example/dsAutomationHistory0_domain/foo.example
 
-               Figure 3: Example DS Automation History Query
+               Figure 5: Example DS Automation History Query
 
    The resulting domain object MUST contain historical events for
-   "dsData" and "keyData" events as described Section 3.  The events
-   given MUST include all "dsData" and "keyData" events since the RDAP
-   server began supporting the "dsAutomationHistory0" extension on a per
-   domain registration basis (i.e., if foo.example is deleted and re-
-   registered, the server is not expected to produce events from the
-   first registration of foo.example registration).
+   "dsData" and "keyData" events as described Section 3.
+
+   {
+     "objectClassName" : "domain",
+     "ldhName" : "foo.example",
+     "secureDNS" : {
+       "delegationSigned" : true,
+       "dsData" : [
+         {
+           "algorithm" : 13,
+           "digest" : "B9BEC0EAC0F064929C8586DB185537787015EC3A48F0894BEA74DEEA452F3060",
+           "digestType" : 2,
+           "keyTag" : 47828
+           "events" : [
+             {
+               "eventAction" : "ds automation reomval",
+               "eventActor"  : "https://reg.example.com/ds-automation.html",
+               "eventDate"   : "2026-10-14T00:00:00Z"
+             },
+             {
+               "eventAction" : "ds automation update",
+               "eventActor"  : "https://reg.example.com/ds-automation.html",
+               "eventDate"   : "2026-10-13T00:00:00Z"
+             },
+             {
+               "eventAction" : "ds automation instantiation",
+               "eventActor"  : "https://reg.example.com/ds-automation.html",
+               "eventDate"   : "2026-10-12T00:00:00Z"
+             }
+           ]
+         }
+       ]
+     }
+   }
+
+       Figure 6: Example Result of dsAutomationHistory0_domain Query
+
+   The events given MUST include all "dsData" and "keyData" events since
+   the RDAP server began supporting the "dsAutomationHistory0" extension
+   on a per domain registration basis (i.e., if foo.example is deleted
+   and re-registered, the server is not expected to produce events from
+   the first registration of foo.example registration).
 
 6.  The "ttl0" RDAP Extension
 
