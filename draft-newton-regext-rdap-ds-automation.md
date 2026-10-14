@@ -137,7 +137,7 @@ As such, it is not expected that "ds automation removal" would appear in these e
 The "dsAutomationHistory0" extension defines a query path similar to {{Section 3.1.3 of RFC9082}} and
 produces a domain object as defined in {{Section 5.3 of RFC9083}}.
 
-The query path is "dsAutomationHistory0_domain" followed by the <domain name> segment
+The query path is "dsAutomationHistory0_domain" followed by the \<domain name\> segment
 as described in {{Section 3.1.3 of RFC9082}}.
 
 {: #dsAutomationHistory0_query_example title="Example DS Automation History Query"}
