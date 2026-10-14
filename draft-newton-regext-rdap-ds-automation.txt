@@ -2,38 +2,41 @@
 
 
 
-REGEXT                                                         A. Newton
+Registration Protocols Extensions                              A. Newton
 Internet-Draft                                                     ICANN
-Intended status: Best Current Practice                      October 2026
-Expires: 17 April 2027
+Intended status: Standards Track                                J. Singh
+Expires: 17 April 2027                                              ARIN
+                                                            October 2026
 
 
- Best Current Practices for Publication of DS Automation Events in RDAP
-                 draft-newton-regext-rdap-ds-automation
+      RDAP Extensions for the Publication of DS Automation Events
+             draft-newton-regext-rdap-ds-automation-latest
 
 Abstract
 
-   This document describes the best current practices for the
-   publication of RDAP events in domain registrations regarding the
-   automated maintenance of Delegation Signer (DS) records as described
-   in RFC10026.
+   This document describes two RDAP extensions for the publication of
+   RDAP events in domain registrations regarding the automated
+   maintenance of Delegation Signer (DS) records as described in
+   RFC10026.
 
 About This Document
 
    This note is to be removed before publishing as an RFC.
 
    The latest revision of this draft can be found at
-   https://anewton1998.github.io/draft-newton-regext-rdap-ds-
-   automation/.  Status information for this document may be found at
-   https://datatracker.ietf.org/doc/draft-newton-regext-rdap-ds/.
+   https://anewton1998.github.io/draft-newton-regext-rdap-ds-automation/
+   draft-newton-regext-rdap-ds-automation.html.  Status information for
+   this document may be found at https://datatracker.ietf.org/doc/draft-
+   newton-regext-rdap-ds-automation/.
 
-   Discussion of this document takes place on the REGEXT Working Group
-   mailing list (mailto:regext@ietf.org), which is archived at
-   https://mailarchive.ietf.org/arch/browse/regext/.  Subscribe at
-   https://www.ietf.org/mailman/listinfo/regext/.
+   Discussion of this document takes place on the Registration Protocols
+   Extensions Working Group mailing list (mailto:regext@ietf.org), which
+   is archived at https://mailarchive.ietf.org/arch/browse/regext/.
+   Subscribe at https://www.ietf.org/mailman/listinfo/regext/.
 
    Source for this draft and an issue tracker can be found at
-   https://github.com/anewton1998/draft-ietf-newton-rdap-ds-automation.
+   https://github.com/anewton1998/draft-newton-regext-rdap-ds-
+   automation.
 
 Status of This Memo
 
@@ -70,24 +73,30 @@ Table of Contents
 
    1.  Introduction
    2.  Conventions and Definitions
-   3.  The "DNSSEC Automation" Event Actor
-   4.  Event Actions
-   5.  "dsAutomation0" RDAP Profile Extension
-   6.  Security Considerations
-   7.  IANA Considerations
-   8.  Normative References
+   3.  DS Automation Events
+     3.1.  Event Actions
+     3.2.  Event Actors
+   4.  The "dsAutomation0" RDAP Extension
+   5.  The "dsAutomationHistory0" RDAP Extension
+   6.  The "ttl0" RDAP Extension
+   7.  Security Considerations
+   8.  IANA Considerations
+   9.  Normative References
    Acknowledgments
-   Author's Address
+   Authors' Addresses
 
 1.  Introduction
 
    [RFC10026] describes best current practices regarding the automated
-   maintenance of Delegation Signer (DS) DNSSEC resource records.  This
-   document describes the publication of those maintenance events in
-   RDAP.
+   maintenance of Delegation Signer (DS) DNSSEC resource records where
+   multiple parties may have channels to create and/or update those
+   records.  This document describes two RDAP extensions for the
+   publication of those maintenance events in RDAP which can be used to
+   troubleshoot the multi-party maintenance of these records.
 
-   [RFC9083] defines an RDAP event as a JSON object with three members,
-   "eventAction", "eventDate", and "eventActor".
+   Both extensions use the RDAP event data structure defined in
+   [RFC9083], which has three members, "eventAction", "eventDate", and
+   "eventActor".
 
    {
      "eventAction": "this thing happened",
@@ -98,7 +107,8 @@ Table of Contents
                         Figure 1: Example RDAP Event
 
    Both the "dsData" and "keyData" structures of the "secureDNS" object
-   in RDAP domain registrations have distinct events.
+   in RDAP domain registrations (as defined in [RFC9083] have distinct
+   events.
 
    "secureDNS" : {
      "delegationSigned" : true,
@@ -109,12 +119,14 @@ Table of Contents
          "digestType" : 2,
          "events" : [
            {
-             "eventAction" : "registration",
-             "eventDate" : "2018-03-27T20:09:08Z"
+             "eventAction" : "an action",
+             "eventActor"  : "foo@example.com",
+             "eventDate"   : "2018-03-27T20:09:08Z"
            },
            {
-             "eventAction" : "last changed",
-             "eventDate" : "2022-04-27T20:19:46Z"
+             "eventAction" : "another action",
+             "eventActor"  : "https://example.com/bar.html",
+             "eventDate"   : "2022-04-27T20:19:46Z"
            }
          ],
          "keyTag" : 47828
@@ -135,40 +147,91 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-3.  The "DNSSEC Automation" Event Actor
+3.  DS Automation Events
 
-   For any event in the "dsData" or "keyData" objects that is a result
-   of an action taken by the authority of the DNS system (i.e., a domain
-   registry for domains or RIR for reverse-domains, "Registry-Led"), the
-   "eventActor" MUST have a value of "DNSSEC Automation".
+3.1.  Event Actions
 
-4.  Event Actions
+   This document defines the following event actions, which are specific
+   to DS automation:
 
-   Use the following registered event actions:
+   *  "ds automation instantiation" - DS automation caused the
+      instantiation of this DNSSEC information
 
-   *  registration
+   *  "ds automation update" - DS automation caused the update of this
+      DNSSEC information
 
-   *  last changed
+   *  "ds automation removal" - DS automation caused the removal of this
+      DNSSEC information
 
-   *  deletion
+3.2.  Event Actors
 
-   RFC10026 mentions historical data... let's discuss.
+   The "eventActor" MUST be either an email address or URL identifying
+   the party attributed to the event.  If an HTTPS URL is given, it
+   should both identify the party attributed to the event and reference
+   a web page with information describing the operational nature of the
+   event.
 
-5.  "dsAutomation0" RDAP Profile Extension
+4.  The "dsAutomation0" RDAP Extension
 
-   RDAP servers compliant with this document MUST use the
-   "dsAutomation0" RDAP profile extension, where profiles are described
-   in [I-D.draft-ietf-regext-rdap-extensions].
+   The "dsAutomation0" extension is an RDAP profile, where an RDAP
+   extension that is a profile is described in
+   [I-D.draft-ietf-regext-rdap-extensions].  That is, it relies only on
+   the RDAP queries defined in [RFC9082] and data structures in
+   [RFC9083] and should be interoperable with all existing RDAP clients
+   that support the domain lookup query.
 
-6.  Security Considerations
+   When responding to domain lookups (Section 3.1.3 of [RFC9082]),
+   servers compliant with the "dsAutomation0" extension MUST describe
+   "dsData" and "keyData" events as described in Section 3 for the
+   domain registration at it exists in the registration system at the
+   time of query (i.e., these are not historical events but represent
+   the current state of the registration).  As such, it is not expected
+   that "ds automation removal" would appear in these events.
+
+5.  The "dsAutomationHistory0" RDAP Extension
+
+   The "dsAutomationHistory0" extension defines a query path similar to
+   Section 3.1.3 of [RFC9082] and produces a domain object as defined in
+   Section 5.3 of [RFC9083].
+
+   The query path is "dsAutomationHistory0_domain" followed by the
+   <domain name> segment as described in Section 3.1.3 of [RFC9082].
+
+   https://rdap.regy.example/dsAutomationHistory0_domain/foo.example
+
+               Figure 3: Example DS Automation History Query
+
+   The resulting domain object MUST contain historical events for
+   "dsData" and "keyData" events as described Section 3.  The events
+   given MUST include all "dsData" and "keyData" events since the RDAP
+   server began supporting the "dsAutomationHistory0" extension on a per
+   domain registration basis (i.e., if foo.example is deleted and re-
+   registered, the server is not expected to produce events from the
+   first registration of foo.example registration).
+
+6.  The "ttl0" RDAP Extension
+
+   [RFC10026] describes the use of the "ttl0" RDAP extension described
+   in [RFC10037].  Use of the "ttl0" extension with the "dsAutomation0"
+   and "dsAutomationHistory0" results is also recommended.
+
+7.  Security Considerations
 
    TODO Security
 
-7.  IANA Considerations
+8.  IANA Considerations
 
-   This document has no IANA actions.
+   TODO register "dsAutomation0"
 
-8.  Normative References
+   TODO register "dsAutomationHistor0"
+
+   TODO register "ds automation instantiation"
+
+   TODO register "ds automation update"
+
+   TODO register "ds automation removal"
+
+9.  Normative References
 
    [I-D.draft-ietf-regext-rdap-extensions]
               Newton, A., Singh, J., and T. Harrison, "RDAP Extensions",
@@ -186,6 +249,11 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
+   [RFC9082]  Hollenbeck, S. and A. Newton, "Registration Data Access
+              Protocol (RDAP) Query Format", STD 95, RFC 9082,
+              DOI 10.17487/RFC9082, June 2021,
+              <https://www.rfc-editor.org/rfc/rfc9082>.
+
    [RFC9083]  Hollenbeck, S. and A. Newton, "JSON Responses for the
               Registration Data Access Protocol (RDAP)", STD 95,
               RFC 9083, DOI 10.17487/RFC9083, June 2021,
@@ -196,12 +264,22 @@ Table of Contents
               RFC 10026, DOI 10.17487/RFC10026, July 2026,
               <https://www.rfc-editor.org/rfc/rfc10026>.
 
+   [RFC10037] Brown, G., "Registration Data Access Protocol (RDAP)
+              Extension for DNS Time-to-Live (TTL) Values", RFC 10037,
+              DOI 10.17487/RFC10037, August 2026,
+              <https://www.rfc-editor.org/rfc/rfc10037>.
+
 Acknowledgments
 
    Gavin Brown helped outline the premise of this document.
 
-Author's Address
+Authors' Addresses
 
    Andrew Newton
    ICANN
    Email: andy@hxr.us
+
+
+   Jasdip Singh
+   ARIN
+   Email: jasdips@arin.net
