@@ -5,7 +5,7 @@ category: std
 
 docname: draft-newton-regext-rdap-ds-automation-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
-number: 
+number:
 date: 14 October 2026
 consensus: true
 v: 3
