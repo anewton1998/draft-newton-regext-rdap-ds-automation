@@ -5,22 +5,22 @@ category: bcp
 
 docname: draft-newton-regext-rdap-ds-automation-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
-number: 
+number:
 date: 13 October 2026
 consensus: true
 v: 3
-area: OPS
-workgroup: REGEXT
+area: "Operations and Management"
+workgroup: "Registration Protocols Extensions"
 keyword:
  - RDAP
  - DNSSEC
 venue:
-  group: REGEXT
-  type: Working Group
-  mail: regext@ietf.org
-  arch: https://mailarchive.ietf.org/arch/browse/regext/
-  github: anewton1998/draft-ietf-newton-rdap-ds-automation
-  latest: https://anewton1998.github.io/draft-newton-regext-rdap-ds-automation/
+  group: "Registration Protocols Extensions"
+  type: "Working Group"
+  mail: "regext@ietf.org"
+  arch: "https://mailarchive.ietf.org/arch/browse/regext/"
+  github: "anewton1998/draft-newton-regext-rdap-ds-automation"
+  latest: "https://anewton1998.github.io/draft-newton-regext-rdap-ds-automation/draft-newton-regext-rdap-ds-automation.html"
 
 author:
  -
