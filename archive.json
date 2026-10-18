@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-10-15T04:01:39.487142+00:00",
+  "timestamp": "2026-10-18T03:54:58.080665+00:00",
   "repo": "anewton1998/draft-newton-regext-rdap-ds-automation",
   "labels": [
     {
@@ -54,6 +54,77 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOVIQ4f88AAAABXsHOFg",
+      "title": "add link from dsAutomation0 domain to dsAutomationHistory0 domain",
+      "url": "https://github.com/anewton1998/draft-newton-regext-rdap-ds-automation/issues/1",
+      "state": "OPEN",
+      "author": "anewton1998",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Create a link relationship and a link requirement from a dsAutomation0 domain to a disAutomationHistory0 domain",
+      "createdAt": "2026-10-16T13:09:48Z",
+      "updatedAt": "2026-10-16T13:09:48Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 2,
+      "id": "I_kwDOVIQ4f88AAAABXsJU2g",
+      "title": "history should be in array",
+      "url": "https://github.com/anewton1998/draft-newton-regext-rdap-ds-automation/issues/2",
+      "state": "OPEN",
+      "author": "anewton1998",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "the dsData and keyData are modeled incorrectly in dsAutomationHistory0. It assumes no change in the actual dsData or keyData. Unfortunately, this needs to change to a format that isn't compliant with RFC9083 but we can borrow bits and pieces to help with code re-use.",
+      "createdAt": "2026-10-16T13:12:13Z",
+      "updatedAt": "2026-10-16T13:12:13Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 3,
+      "id": "I_kwDOVIQ4f88AAAABXsLJLw",
+      "title": "history should include all events",
+      "url": "https://github.com/anewton1998/draft-newton-regext-rdap-ds-automation/issues/3",
+      "state": "OPEN",
+      "author": "anewton1998",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "The current wording seems to exclude other events on the dsData and keyData. it should include all events.\nWe also need to state that the party attesting to \"ds automation *\" will either be the registry or the registrar. Probably need better examples.",
+      "createdAt": "2026-10-16T13:14:18Z",
+      "updatedAt": "2026-10-16T14:37:40Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "peterthomassen",
+          "authorAssociation": "COLLABORATOR",
+          "body": "How do we bound the log length? Or is pagination intended?",
+          "createdAt": "2026-10-16T13:32:25Z",
+          "updatedAt": "2026-10-16T13:32:25Z"
+        },
+        {
+          "author": "anewton1998",
+          "authorAssociation": "OWNER",
+          "body": "The current text says all events since the registration of the domain. This is likely too much. I think an algorithm is probably better, such as to the last removal or the last 3 updates up to instantiation. I don't know what is right. The big issue is that most operators will not keep this information in their \"live\" database, especially the deletion.\n\nThere is a pagination extension for RDAP, but I don't think any client or production server has implemented it. And I don't want to go there. If we have to do pagination, I think we have a problem.",
+          "createdAt": "2026-10-16T14:23:16Z",
+          "updatedAt": "2026-10-16T14:23:16Z"
+        },
+        {
+          "author": "peterthomassen",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> The big issue is that most operators will not keep this information in their \"live\" database\n\nSee also https://www.rfc-editor.org/info/rfc10026/#section-5.1-1.5.1. This is MAY because registries told authors that they don't have that available and it would be more work than they find useful.\n\n> If we have to do pagination, I think we have a problem.\n\nAck.",
+          "createdAt": "2026-10-16T14:37:40Z",
+          "updatedAt": "2026-10-16T14:37:40Z"
+        }
+      ]
+    }
+  ],
   "pulls": []
 }
